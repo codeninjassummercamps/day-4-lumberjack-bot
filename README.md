@@ -1,33 +1,34 @@
- 
+# Day 4 Lumberjack Bot
 
+## Lumberjack Bot
 
-> Open this page at [https://codeninjassummercamps.github.io/day-4-lumberjack-bot/](https://codeninjassummercamps.github.io/day-4-lumberjack-bot/)
+Learn from Sensei about the uses of loops and nesting by teaching the agent how to chop trees for you!
 
-## Use as Extension
+## Listen to Sensei
 
-This repository can be added as an **extension** in MakeCode.
+Sensei will teach you how to make the code, make sure you are following along!
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/codeninjassummercamps/day-4-lumberjack-bot** and import
+## Activity Complete!
 
-## Edit this project ![Build status badge](https://github.com/codeninjassummercamps/day-4-lumberjack-bot/workflows/MakeCode/badge.svg)
+Great job listening to Sensei, now go test your lumberjack bot!
 
-To edit this repository in MakeCode.
+```blocks
+player.onChat("chop", function () {
+    agent.teleportToPlayer()
+    while (agent.detect(AgentDetection.Block, FORWARD)) {
+        treeHeight += 1
+        if (agent.detect(AgentDetection.Block, UP)) {
+            agent.destroy(UP)
+        }
+        agent.move(UP, 1)
+    }
+    for (let index = 0; index < treeHeight; index++) {
+        agent.move(DOWN, 1)
+        agent.destroy(FORWARD)
+    }
+    agent.collectAll()
+})
+let treeHeight = 0
+treeHeight = 0
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/codeninjassummercamps/day-4-lumberjack-bot** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/codeninjassummercamps/day-4-lumberjack-bot/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+```
